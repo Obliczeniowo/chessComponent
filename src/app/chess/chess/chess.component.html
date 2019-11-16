@@ -1,3 +1,11 @@
-<div *ngFor="let row of [1, 2, 3, 4, 5, 6, 7, 8]">
-    <app-chess-field *ngFor="let coumn of ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']" [row]="row" column="column"></app-chess-field>
+<div class="row-fields" *ngFor="let row of [8, 7, 6, 5, 4, 3, 2, 1]">
+    <div class="row-header">
+        <div>{{ row }}</div>
+    </div>
+    <app-chess-field *ngFor="let column of ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']" [row]="row" [column]="column">
+    </app-chess-field>
+
+    <div class="row-header">
+        <div>{{ row }}</div>
+    </div>
 </div>

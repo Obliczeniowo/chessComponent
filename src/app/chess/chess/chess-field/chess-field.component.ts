@@ -14,6 +14,15 @@ export class ChessFieldComponent implements OnInit {
     return this.column.charCodeAt(0) - 'a'.charCodeAt(0) + 1;
   }
 
+  get isBlack(): boolean {
+    console.log('row', this.row, 'column', this.columnIndex);
+    return ((this.row) + (this.columnIndex ) % 2) % 2 === 0;
+  }
+
+  get isWhite(): boolean {
+    return !this.isBlack;
+  }
+
   constructor() { }
 
   ngOnInit() {
