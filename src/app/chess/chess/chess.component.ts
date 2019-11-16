@@ -1,3 +1,4 @@
+import { ChessEnum } from './chess-enum';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChessComponent implements OnInit {
 
+  ChessEnum = ChessEnum;
+
   rows: number[] = [8, 7, 6, 5, 4, 3, 2, 1];
   columns: string[] = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

@@ -19,3 +19,17 @@
 <div class="columns-header">
     <div class="column-header" *ngFor="let column of columns">{{ column }}</div>
 </div>
+
+<app-chess-pawn [pawnType]="ChessEnum.whiteKing"></app-chess-pawn>
+<app-chess-pawn [pawnType]="ChessEnum.whiteQueen"></app-chess-pawn>
+<app-chess-pawn [pawnType]="ChessEnum.whiteRook"></app-chess-pawn>
+<app-chess-pawn [pawnType]="ChessEnum.whiteBishop"></app-chess-pawn>
+<app-chess-pawn [pawnType]="ChessEnum.whiteKnight"></app-chess-pawn>
+<app-chess-pawn [pawnType]="ChessEnum.whitePawn"></app-chess-pawn>
+
+<app-chess-pawn [pawnType]="ChessEnum.blackKing"></app-chess-pawn>
+<app-chess-pawn [pawnType]="ChessEnum.blackQueen"></app-chess-pawn>
+<app-chess-pawn [pawnType]="ChessEnum.blackRook"></app-chess-pawn>
+<app-chess-pawn [pawnType]="ChessEnum.blackBishop"></app-chess-pawn>
+<app-chess-pawn [pawnType]="ChessEnum.blackKnight"></app-chess-pawn>
+<app-chess-pawn [pawnType]="ChessEnum.blackPawn"></app-chess-pawn>
