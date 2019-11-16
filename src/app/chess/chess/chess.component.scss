@@ -10,3 +10,17 @@
     align-items: center;
     justify-content: center;
 }
+
+.columns-header {
+    display: flex;
+    width: 800px;
+    padding-left: 30px;
+}
+
+.columns-header .column-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 100px;
+}

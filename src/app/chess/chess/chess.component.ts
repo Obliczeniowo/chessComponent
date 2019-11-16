@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChessComponent implements OnInit {
 
+  rows: number[] = [8, 7, 6, 5, 4, 3, 2, 1];
+  columns: string[] = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+
   constructor() { }
 
   ngOnInit() {
