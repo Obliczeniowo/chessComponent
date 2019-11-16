@@ -1,35 +1,44 @@
-
 <div class="columns-header">
     <div class="column-header" *ngFor="let column of columns">{{ column }}</div>
 </div>
 
-<div class="row-fields" *ngFor="let row of rows">
-    <div class="row-header">
-        <div>{{ row }}</div>
+<div class="pawns-and-board">
+
+    <div class="white-pawns">
+        <app-chess-pawn [pawnType]="ChessEnum.whiteKing"></app-chess-pawn>
+        <app-chess-pawn [pawnType]="ChessEnum.whiteQueen"></app-chess-pawn>
+        <app-chess-pawn [pawnType]="ChessEnum.whiteRook"></app-chess-pawn>
+        <app-chess-pawn [pawnType]="ChessEnum.whiteBishop"></app-chess-pawn>
+        <app-chess-pawn [pawnType]="ChessEnum.whiteKnight"></app-chess-pawn>
+        <app-chess-pawn [pawnType]="ChessEnum.whitePawn"></app-chess-pawn>
     </div>
 
-    <app-chess-field *ngFor="let column of columns" [row]="row" [column]="column">
-    </app-chess-field>
+    <div>
+        <div class="row-fields" *ngFor="let row of rows">
+            <div class="row-header">
+                <div>{{ row }}</div>
+            </div>
 
-    <div class="row-header">
-        <div>{{ row }}</div>
+            <app-chess-field *ngFor="let column of columns" [row]="row" [column]="column">
+            </app-chess-field>
+
+            <div class="row-header">
+                <div>{{ row }}</div>
+            </div>
+        </div>
     </div>
+
+    <div class="black-pawns">
+        <app-chess-pawn [pawnType]="ChessEnum.blackKing"></app-chess-pawn>
+        <app-chess-pawn [pawnType]="ChessEnum.blackQueen"></app-chess-pawn>
+        <app-chess-pawn [pawnType]="ChessEnum.blackRook"></app-chess-pawn>
+        <app-chess-pawn [pawnType]="ChessEnum.blackBishop"></app-chess-pawn>
+        <app-chess-pawn [pawnType]="ChessEnum.blackKnight"></app-chess-pawn>
+        <app-chess-pawn [pawnType]="ChessEnum.blackPawn"></app-chess-pawn>
+    </div>
+
 </div>
 
 <div class="columns-header">
     <div class="column-header" *ngFor="let column of columns">{{ column }}</div>
 </div>
-
-<app-chess-pawn [pawnType]="ChessEnum.whiteKing"></app-chess-pawn>
-<app-chess-pawn [pawnType]="ChessEnum.whiteQueen"></app-chess-pawn>
-<app-chess-pawn [pawnType]="ChessEnum.whiteRook"></app-chess-pawn>
-<app-chess-pawn [pawnType]="ChessEnum.whiteBishop"></app-chess-pawn>
-<app-chess-pawn [pawnType]="ChessEnum.whiteKnight"></app-chess-pawn>
-<app-chess-pawn [pawnType]="ChessEnum.whitePawn"></app-chess-pawn>
-
-<app-chess-pawn [pawnType]="ChessEnum.blackKing"></app-chess-pawn>
-<app-chess-pawn [pawnType]="ChessEnum.blackQueen"></app-chess-pawn>
-<app-chess-pawn [pawnType]="ChessEnum.blackRook"></app-chess-pawn>
-<app-chess-pawn [pawnType]="ChessEnum.blackBishop"></app-chess-pawn>
-<app-chess-pawn [pawnType]="ChessEnum.blackKnight"></app-chess-pawn>
-<app-chess-pawn [pawnType]="ChessEnum.blackPawn"></app-chess-pawn>
