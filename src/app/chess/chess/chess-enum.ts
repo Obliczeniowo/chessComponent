@@ -12,4 +12,6 @@ export enum ChessEnum {
     blackBishop = '♝',
     blackKnight = '♞',
     blackPawn = '♟',
+
+    nonePawn = ''
 }

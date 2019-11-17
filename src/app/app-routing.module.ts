@@ -5,6 +5,11 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: 'chess-view', component: ChessViewComponent
+  },
+  {
+    path: '',
+    redirectTo: '/chess-view',
+    pathMatch: 'full'
   }
 ];
 

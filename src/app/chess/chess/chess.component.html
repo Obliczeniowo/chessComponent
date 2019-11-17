@@ -5,21 +5,22 @@
 <div class="pawns-and-board">
 
     <div class="white-pawns">
-        <app-chess-pawn draggable="true" [pawnType]="ChessEnum.whiteKing"></app-chess-pawn>
-        <app-chess-pawn draggable="true" [pawnType]="ChessEnum.whiteQueen"></app-chess-pawn>
-        <app-chess-pawn draggable="true" [pawnType]="ChessEnum.whiteRook"></app-chess-pawn>
-        <app-chess-pawn draggable="true" [pawnType]="ChessEnum.whiteBishop"></app-chess-pawn>
-        <app-chess-pawn draggable="true" [pawnType]="ChessEnum.whiteKnight"></app-chess-pawn>
-        <app-chess-pawn draggable="true" [pawnType]="ChessEnum.whitePawn"></app-chess-pawn>
+        <app-chess-pawn draggable="true" (dragstart)="dragStart($event)" [pawnType]="ChessEnum.whiteKing"></app-chess-pawn>
+        <app-chess-pawn draggable="true" (dragstart)="dragStart($event)" [pawnType]="ChessEnum.whiteQueen"></app-chess-pawn>
+        <app-chess-pawn draggable="true" (dragstart)="dragStart($event)" [pawnType]="ChessEnum.whiteRook"></app-chess-pawn>
+        <app-chess-pawn draggable="true" (dragstart)="dragStart($event)" [pawnType]="ChessEnum.whiteBishop"></app-chess-pawn>
+        <app-chess-pawn draggable="true" (dragstart)="dragStart($event)" [pawnType]="ChessEnum.whiteKnight"></app-chess-pawn>
+        <app-chess-pawn draggable="true" (dragstart)="dragStart($event)" [pawnType]="ChessEnum.whitePawn"></app-chess-pawn>
     </div>
 
-    <div>
+    <div >
         <div class="row-fields" *ngFor="let row of rows">
             <div class="row-header">
                 <div>{{ row }}</div>
             </div>
 
-            <app-chess-field *ngFor="let column of columns" [row]="row" [column]="column">
+            <app-chess-field class="dropzone" *ngFor="let column of columns" [row]="row" [column]="column" [id]="column + row">
+                <app-chess-pawn draggable="true" (dragstart)="dragStart($event)" [ngClass] = "column + row" [row]="row" [column]="column"></app-chess-pawn>
             </app-chess-field>
 
             <div class="row-header">
@@ -29,12 +30,12 @@
     </div>
 
     <div class="black-pawns">
-        <app-chess-pawn draggable="true" [pawnType]="ChessEnum.blackKing"></app-chess-pawn>
-        <app-chess-pawn draggable="true" [pawnType]="ChessEnum.blackQueen"></app-chess-pawn>
-        <app-chess-pawn draggable="true" [pawnType]="ChessEnum.blackRook"></app-chess-pawn>
-        <app-chess-pawn draggable="true" [pawnType]="ChessEnum.blackBishop"></app-chess-pawn>
-        <app-chess-pawn draggable="true" [pawnType]="ChessEnum.blackKnight"></app-chess-pawn>
-        <app-chess-pawn draggable="true" [pawnType]="ChessEnum.blackPawn"></app-chess-pawn>
+        <app-chess-pawn draggable="true" (dragstart)="dragStart($event)"  [pawnType]="ChessEnum.blackKing"></app-chess-pawn>
+        <app-chess-pawn draggable="true" (dragstart)="dragStart($event)"  [pawnType]="ChessEnum.blackQueen"></app-chess-pawn>
+        <app-chess-pawn draggable="true" (dragstart)="dragStart($event)"  [pawnType]="ChessEnum.blackRook"></app-chess-pawn>
+        <app-chess-pawn draggable="true" (dragstart)="dragStart($event)"  [pawnType]="ChessEnum.blackBishop"></app-chess-pawn>
+        <app-chess-pawn draggable="true" (dragstart)="dragStart($event)"  [pawnType]="ChessEnum.blackKnight"></app-chess-pawn>
+        <app-chess-pawn draggable="true" (dragstart)="dragStart($event)"  [pawnType]="ChessEnum.blackPawn"></app-chess-pawn>
     </div>
 
 </div>
