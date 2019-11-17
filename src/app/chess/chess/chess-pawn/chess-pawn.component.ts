@@ -8,6 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ChessPawnComponent implements OnInit {
 
+  @Input() row: number;
+  @Input() column: string;
+
   @Input() pawnType: ChessEnum;
 
   constructor() { }
