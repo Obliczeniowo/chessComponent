@@ -1,3 +1,4 @@
+import { ChessEnum } from './../chess-enum';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -6,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./chess-field.component.scss']
 })
 export class ChessFieldComponent implements OnInit {
+  ChessEnum = ChessEnum;
 
   @Input() row: number;
   @Input() column: string;
@@ -15,8 +17,7 @@ export class ChessFieldComponent implements OnInit {
   }
 
   get isBlack(): boolean {
-    console.log('row', this.row, 'column', this.columnIndex);
-    return ((this.row) + (this.columnIndex ) % 2) % 2 === 0;
+    return ((this.row) + (this.columnIndex) % 2) % 2 === 0;
   }
 
   get isWhite(): boolean {

@@ -1,3 +1,4 @@
+import { MaterialModule } from './../material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChessComponent } from './chess/chess.component';
@@ -14,7 +15,8 @@ import { ChessViewComponent } from './chess-view/chess-view.component';
       ChessViewComponent
     ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule
   ]
 })
 export class ChessModule { }
