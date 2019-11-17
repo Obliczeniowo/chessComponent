@@ -94,8 +94,4 @@ export class ChessComponent implements OnInit, AfterViewInit, OnDestroy {
     this.hostHtml.removeEventListener('drop', this.drop);
   }
 
-  dragStart(event) {
-    event.dataTransfer.setData('text/plain', null);
-  }
-
 }
