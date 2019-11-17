@@ -1,13 +1,13 @@
 import { ChessPawnComponent } from './chess-pawn/chess-pawn.component';
 import { ChessEnum } from './chess-enum';
-import { Component, OnInit, ElementRef, ViewChild, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-chess',
   templateUrl: './chess.component.html',
   styleUrls: ['./chess.component.scss']
 })
-export class ChessComponent implements OnInit {
+export class ChessComponent implements OnInit, AfterViewInit {
 
   ChessEnum = ChessEnum;
 
@@ -32,7 +32,6 @@ export class ChessComponent implements OnInit {
 
     this.elementRef.nativeElement.addEventListener('dragstart', (event: any) => {
       // store a ref. on the dragged elem
-      console.log('dragged', this.dragged)
       this.dragged = event.target;
       // make it half transparent
       event.target.style.opacity = .5;
@@ -66,13 +65,11 @@ export class ChessComponent implements OnInit {
     }, false);
 
     this.elementRef.nativeElement.addEventListener('drop', (event: any) => {
-      // prevent default action (open as link for some elements)
       event.preventDefault();
-      // move dragged elem to the selected drop target
-      let target: HTMLElement = event.target.classList.contains('pawn-field') ? event.target.parentElement : event.target;
+      const target: HTMLElement = event.target.classList.contains('pawn-field') ? event.target.parentElement : event.target;
       if (target) {
-        let pawn: ChessPawnComponent = this.chessPawns.find((item) => target.classList.contains(item.column + item.row));
-        let pawnFrom: ChessPawnComponent = this.chessPawns.find((item) => this.dragged.classList.contains(item.column + item.row));
+        const pawn: ChessPawnComponent = this.chessPawns.find((item) => target.classList.contains(item.column + item.row));
+        const pawnFrom: ChessPawnComponent = this.chessPawns.find((item) => this.dragged.classList.contains(item.column + item.row));
         if (pawnFrom) {
           pawnFrom.pawnType = ChessEnum.nonePawn;
         }
@@ -86,19 +83,6 @@ export class ChessComponent implements OnInit {
 
   dragStart(event) {
     event.dataTransfer.setData('text/plain', null);
-  }
-
-  dragEnd(event) {
-    console.log('drag end', event);
-  }
-
-  drop(event) {
-    console.log(event);
-  }
-
-  allowDrop(event) {
-    console.log(event.target);
-    // event.dataTransfer.setData('chessType', event.target.chessType);
   }
 
 }
