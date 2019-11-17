@@ -18,6 +18,10 @@ export class ChessComponent implements OnInit, AfterViewInit, OnDestroy {
   rows: number[] = [8, 7, 6, 5, 4, 3, 2, 1];
   columns: string[] = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 
+  private get hostHtml(): HTMLElement {
+    return this.elementRef.nativeElement;
+  }
+
   private dragstart = (event: any) => {
     // store a ref. on the dragged elem
     this.dragged = event.target;
@@ -73,26 +77,21 @@ export class ChessComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     document.addEventListener('drag', this.drag, false);
 
-    this.elementRef.nativeElement.addEventListener('dragstart', this.dragstart, false);
-
-    this.elementRef.nativeElement.addEventListener('dragend', this.dragend, false);
-
-    this.elementRef.nativeElement.addEventListener('dragover', this.dragover, false);
-
-    this.elementRef.nativeElement.addEventListener('dragenter', this.dragenter, false);
-
-    this.elementRef.nativeElement.addEventListener('dragleave', this.dragleave, false);
-
-    this.elementRef.nativeElement.addEventListener('drop', this.drop, false);
+    this.hostHtml.addEventListener('dragstart', this.dragstart, false);
+    this.hostHtml.addEventListener('dragend', this.dragend, false);
+    this.hostHtml.addEventListener('dragover', this.dragover, false);
+    this.hostHtml.addEventListener('dragenter', this.dragenter, false);
+    this.hostHtml.addEventListener('dragleave', this.dragleave, false);
+    this.hostHtml.addEventListener('drop', this.drop, false);
   }
 
   ngOnDestroy() {
-    this.elementRef.nativeElement.removeEventListener('dragstart', this.dragstart);
-    this.elementRef.nativeElement.removeEventListener('dragend', this.dragend);
-    this.elementRef.nativeElement.removeEventListener('dragover', this.dragover);
-    this.elementRef.nativeElement.removeEventListener('dragenter', this.dragenter);
-    this.elementRef.nativeElement.removeEventListener('dragleave', this.dragleave);
-    this.elementRef.nativeElement.removeEventListener('drop', this.drop);
+    this.hostHtml.removeEventListener('dragstart', this.dragstart);
+    this.hostHtml.removeEventListener('dragend', this.dragend);
+    this.hostHtml.removeEventListener('dragover', this.dragover);
+    this.hostHtml.removeEventListener('dragenter', this.dragenter);
+    this.hostHtml.removeEventListener('dragleave', this.dragleave);
+    this.hostHtml.removeEventListener('drop', this.drop);
   }
 
   dragStart(event) {
