@@ -1,6 +1,6 @@
 import { ChessPawnComponent } from './chess-pawn/chess-pawn.component';
 import { ChessEnum } from './chess-enum';
-import { Component, OnInit, ElementRef, ViewChild, ViewChildren, QueryList, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, ViewChildren, QueryList, AfterViewInit, OnDestroy, Input } from '@angular/core';
 
 @Component({
   selector: 'app-chess',
@@ -15,7 +15,8 @@ export class ChessComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChildren(ChessPawnComponent) chessPawns: QueryList<ChessPawnComponent>;
 
-  private chessPawnsMap: Map<string, ChessPawnComponent> = new Map<string, ChessPawnComponent>();
+  @Input() chessPawnsMap: Map<string, ChessEnum> = new Map<string, ChessEnum>();
+  private chessPawnsMapComponent: Map<string, ChessPawnComponent> = new Map<string, ChessPawnComponent>();
 
   rows: number[] = [8, 7, 6, 5, 4, 3, 2, 1];
   columns: string[] = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
@@ -58,13 +59,13 @@ export class ChessComponent implements OnInit, AfterViewInit, OnDestroy {
     event.preventDefault();
     const target: HTMLElement = event.target.classList.contains('pawn-field') ? event.target.parentElement : event.target;
     if (target) {
-      const pawn: ChessPawnComponent = this.chessPawnsMap.get(target.className);
-      const pawnFrom: ChessPawnComponent = this.chessPawnsMap.get(this.dragged.className);
+      const pawn: ChessPawnComponent = this.chessPawnsMapComponent.get(target.className);
+      const pawnFrom: ChessPawnComponent = this.chessPawnsMapComponent.get(this.dragged.className);
       if (pawnFrom) {
-        pawnFrom.pawnType = ChessEnum.nonePawn;
+        this.chessPawnsMap.set(this.dragged.className, ChessEnum.nonePawn);
       }
       if (pawn) {
-        pawn.pawnType = this.dragged.innerText as ChessEnum;
+        this.chessPawnsMap.set(target.className, this.dragged.innerText as ChessEnum);
       }
     }
 
@@ -79,7 +80,7 @@ export class ChessComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     this.chessPawns.forEach((pawn) => {
       if (pawn.column && pawn.row) {
-        this.chessPawnsMap.set(pawn.column + pawn.row, pawn);
+        this.chessPawnsMapComponent.set(pawn.column + pawn.row, pawn);
       }
     });
 
@@ -102,4 +103,18 @@ export class ChessComponent implements OnInit, AfterViewInit, OnDestroy {
     this.hostHtml.removeEventListener('drop', this.drop);
   }
 
+  setChessPawn(column: string, row: number, pawn: ChessEnum) {
+    this.chessPawnsMap.set(column + row, pawn);
+    /* const pawnComponent: ChessPawnComponent = this.chessPawns.find(
+      (pawnC) => pawnC.column === column && pawnC.row === row
+      );
+    if (pawnComponent) {
+      pawnComponent.pawnType = pawn;
+    } */
+  }
+
+  getChessPawn(address: string): ChessEnum {
+    const pawn: ChessEnum = this.chessPawnsMap.get(address);
+    return pawn ? pawn : ChessEnum.nonePawn;
+  }
 }
