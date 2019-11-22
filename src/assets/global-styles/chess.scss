@@ -1,0 +1,43 @@
+$field-size: 100px;
+
+.pawn-field,
+.chess-field {
+    width: $field-size;
+    height: $field-size;
+}
+
+.pawn-field {
+    font-size: $field-size * 0.6;
+}
+
+.white-field {
+    background-color: #d2d4cd;
+}
+
+.white-field:hover {
+    background-color: #edf0e6;
+}
+
+.black-field {
+    background-color: #ac9a32;
+}
+
+.black-field:hover {
+    background-color: #d3bd40;
+}
+
+.dark-classic .white-field {
+    background-color: #d2d4cd;
+}
+
+.dark-classic .white-field:hover {
+    background-color: #edf0e6;
+}
+
+.dark-classic .black-field {
+    background-color: #445566;
+}
+
+.dark-classic .black-field:hover {
+    background-color: #778899;
+}
