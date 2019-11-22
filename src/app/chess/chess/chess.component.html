@@ -21,7 +21,7 @@
 
             <app-chess-field class="dropzone" *ngFor="let column of columns" [row]="row" [column]="column"
                 [id]="column + row">
-                <app-chess-pawn [ngClass]="column + row" [row]="row" [column]="column"></app-chess-pawn>
+                <app-chess-pawn [ngClass]="column + row" [row]="row" [column]="column" [pawnType]="getChessPawn(column + row)"></app-chess-pawn>
             </app-chess-field>
 
             <div class="row-header">
