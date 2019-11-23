@@ -1,2 +1,19 @@
-<app-chess [chessPawnsMap]="chessPawns" class="dark-classic">
+<div>
+    <mat-form-field appearance="outline">
+        <mat-label>Wybierz kolorystykę:</mat-label>
+        <mat-select [(ngModel)]="chessStyleEnum">
+            <mat-option [value]="ChessStylesEnum.defaultBrown">
+                Domyślny brązowy
+            </mat-option>
+            <mat-option [value]="ChessStylesEnum.darkBlue">
+                Ciemno-niebieski
+            </mat-option>
+            <mat-option [value]="ChessStylesEnum.brightBlue">
+                Jasno-niebieski
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<app-chess [chessPawnsMap]="chessPawns" [ngClass]="chessStyleEnum">
 </app-chess>

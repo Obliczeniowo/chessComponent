@@ -91,18 +91,35 @@ $pawn-font-size: calc((100vw - #{$column-row-size} * 2) / 10 * 0.6);
   background-color: #d3bd40;
 }
 
-.dark-classic .white-field {
+.dark-blue .white-field {
   background-color: #d2d4cd;
 }
 
-.dark-classic .white-field:hover {
+.dark-blue .white-field:hover {
   background-color: #edf0e6;
 }
 
-.dark-classic .black-field {
+.dark-blue .black-field {
   background-color: #445566;
 }
 
-.dark-classic .black-field:hover {
+.dark-blue .black-field:hover {
   background-color: #778899;
 }
+
+.bright-blue .white-field {
+  background-color: #d2d4cd;
+}
+
+.bright-blue .white-field:hover {
+  background-color: #edf0e6;
+}
+
+.bright-blue .black-field {
+  background-color: #778899;
+}
+
+.bright-blue .black-field:hover {
+  background-color: #99aabb;
+}
+

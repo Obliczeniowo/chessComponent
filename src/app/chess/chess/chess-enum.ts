@@ -15,3 +15,9 @@ export enum ChessEnum {
 
     nonePawn = ''
 }
+
+export enum ChessStylesEnum {
+    defaultBrown = 'default',
+    darkBlue = 'dark-blue',
+    brightBlue = 'bright-blue'
+}
