@@ -1,6 +1,6 @@
 import { ChessPawnComponent } from './chess-pawn/chess-pawn.component';
 import { ChessEnum } from './chess-enum';
-import { Component, OnInit, ElementRef, ViewChild, ViewChildren, QueryList, AfterViewInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChildren, QueryList, AfterViewInit, OnDestroy, Input } from '@angular/core';
 
 @Component({
   selector: 'app-chess',
@@ -26,14 +26,11 @@ export class ChessComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private dragstart = (event: any) => {
-    // store a ref. on the dragged elem
     this.dragged = event.target;
-    // make it half transparent
     event.target.style.opacity = .5;
   }
 
   private dragend = (event: any) => {
-    // reset the transparency
     event.target.style.opacity = '';
   }
 
@@ -64,7 +61,7 @@ export class ChessComponent implements OnInit, AfterViewInit, OnDestroy {
       if (pawnFrom) {
         this.chessPawnsMap.set(this.dragged.className, ChessEnum.nonePawn);
       }
-      if (pawn) {
+      if (pawn && (this.dragged.innerText as ChessEnum) !== ChessEnum.nonePawn) {
         this.chessPawnsMap.set(target.className, this.dragged.innerText as ChessEnum);
       }
     }
@@ -105,12 +102,6 @@ export class ChessComponent implements OnInit, AfterViewInit, OnDestroy {
 
   setChessPawn(column: string, row: number, pawn: ChessEnum) {
     this.chessPawnsMap.set(column + row, pawn);
-    /* const pawnComponent: ChessPawnComponent = this.chessPawns.find(
-      (pawnC) => pawnC.column === column && pawnC.row === row
-      );
-    if (pawnComponent) {
-      pawnComponent.pawnType = pawn;
-    } */
   }
 
   getChessPawn(address: string): ChessEnum {
