@@ -1,3 +1,4 @@
+import { ChessStylesEnum } from './../chess/chess-enum';
 import { ChessComponent } from './../chess/chess.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChessEnum } from '../chess/chess-enum';
@@ -8,6 +9,10 @@ import { ChessEnum } from '../chess/chess-enum';
   styleUrls: ['./chess-view.component.scss']
 })
 export class ChessViewComponent implements OnInit {
+
+  ChessStylesEnum = ChessStylesEnum;
+
+  chessStyleEnum: ChessStylesEnum = ChessStylesEnum.darkBlue;
 
   chessPawns: Map<string, ChessEnum> = new Map<string, ChessEnum>();
 
