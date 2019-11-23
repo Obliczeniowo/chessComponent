@@ -1,0 +1,108 @@
+$field-size: 70px;
+$column-row-size: 30px;
+$max-field-board-size: calc((100vw - #{$column-row-size} * 2) / 10 * 8);
+$max-field-size: calc((100vw - #{$column-row-size} * 2) / 10);
+$pawn-font-size: calc((100vw - #{$column-row-size} * 2) / 10 * 0.6);
+
+.pawn-field,
+.chess-field {
+  width: $field-size;
+  height: $field-size;
+  max-width: $max-field-size;
+  max-height: $max-field-size;
+}
+
+.pawn-field {
+  font-size: $pawn-font-size;
+}
+
+.white-pawns,
+.black-pawns {
+  width: $field-size;
+  max-width: $max-field-size;
+}
+
+.row-header {
+  height: $field-size;
+  max-height: $max-field-size;
+}
+.columns-header {
+  width: $field-size * 8;
+  max-width: calc((100vw - #{$column-row-size} * 2) / 10 * 8);
+  padding-left: calc(#{$column-row-size} + (100vw - #{$column-row-size} * 2) / 10);
+}
+
+.pawns-and-board {
+  height: $field-size * 8;
+  max-height: calc((100vw - #{$column-row-size} * 2) / 10 * 8);
+}
+
+.columns-header .column-header {
+  width: $field-size;
+  max-width: $max-field-size;
+}
+
+@media (min-width: $field-size * 10 + $column-row-size * 2) {
+  .pawn-field,
+  .chess-field {
+    max-width: $field-size;
+    max-height: $field-size;
+  }
+
+  .pawn-field {
+    font-size: $field-size * 0.6;
+  }
+
+  .white-pawns,
+  .black-pawns {
+    max-width: $field-size;
+  }
+
+  .row-header {
+    max-height: $field-size;
+  }
+  .columns-header {
+    max-width: $field-size * 8;
+    padding-left: $column-row-size + $field-size;
+  }
+
+  .pawns-and-board {
+    max-height: $field-size * 8;
+  }
+
+  .columns-header .column-header {
+    max-width: $field-size;
+  }
+}
+
+.white-field {
+  background-color: #d2d4cd;
+}
+
+.white-field:hover {
+  background-color: #edf0e6;
+}
+
+.black-field {
+  background-color: #ac9a32;
+}
+
+.black-field:hover {
+  background-color: #d3bd40;
+}
+
+.dark-classic .white-field {
+  background-color: #d2d4cd;
+}
+
+.dark-classic .white-field:hover {
+  background-color: #edf0e6;
+}
+
+.dark-classic .black-field {
+  background-color: #445566;
+}
+
+.dark-classic .black-field:hover {
+  background-color: #778899;
+}
