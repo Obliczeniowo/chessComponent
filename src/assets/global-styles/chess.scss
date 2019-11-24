@@ -75,6 +75,8 @@ $pawn-font-size: calc((100vw - #{$column-row-size} * 2) / 10 * 0.6);
   }
 }
 
+/* default brown colors styles */
+
 .white-field {
   background-color: #d2d4cd;
 }
@@ -91,6 +93,8 @@ $pawn-font-size: calc((100vw - #{$column-row-size} * 2) / 10 * 0.6);
   background-color: #d3bd40;
 }
 
+/* dark blue colors styles */
+
 .dark-blue .white-field {
   background-color: #d2d4cd;
 }
@@ -106,6 +110,8 @@ $pawn-font-size: calc((100vw - #{$column-row-size} * 2) / 10 * 0.6);
 .dark-blue .black-field:hover {
   background-color: #778899;
 }
+
+/* bright blue colors styles */
 
 .bright-blue .white-field {
   background-color: #d2d4cd;
