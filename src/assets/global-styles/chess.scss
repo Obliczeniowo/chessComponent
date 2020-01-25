@@ -4,12 +4,20 @@ $max-field-board-size: calc((100vw - #{$column-row-size} * 2) / 10 * 8);
 $max-field-size: calc((100vw - #{$column-row-size} * 2) / 10);
 $pawn-font-size: calc((100vw - #{$column-row-size} * 2) / 10 * 0.6);
 
+%pawnsAndFieldsWidth {
+  width: $field-size;
+  max-width: $max-field-size;
+}
+
+%pawnsAndRowsHeight {
+  height: $field-size;
+  max-height: $max-field-size;
+}
+
 .pawn-field,
 .chess-field {
-  width: $field-size;
-  height: $field-size;
-  max-width: $max-field-size;
-  max-height: $max-field-size;
+  @extend %pawnsAndFieldsWidth;
+  @extend %pawnsAndRowsHeight;
 }
 
 .pawn-field {
@@ -18,14 +26,15 @@ $pawn-font-size: calc((100vw - #{$column-row-size} * 2) / 10 * 0.6);
 
 .white-pawns,
 .black-pawns {
-  width: $field-size;
-  max-width: $max-field-size;
+  @extend %pawnsAndFieldsWidth;
 }
 
 .row-header {
-  height: $field-size;
-  max-height: $max-field-size;
+  @extend %pawnsAndRowsHeight;
 }
+
+
+
 .columns-header {
   width: $field-size * 8;
   max-width: calc((100vw - #{$column-row-size} * 2) / 10 * 8);
@@ -75,57 +84,37 @@ $pawn-font-size: calc((100vw - #{$column-row-size} * 2) / 10 * 0.6);
   }
 }
 
+@mixin fields($white, $black, $whiteHover, $blackHover) {
+  .white-field {
+    background-color: $white;
+  }
+  
+  .white-field:hover {
+    background-color: $whiteHover;
+  }
+  
+  .black-field {
+    background-color: $black;
+  }
+  
+  .black-field:hover {
+    background-color: $blackHover;
+  }
+}
+
 /* default brown colors styles */
 
-.white-field {
-  background-color: #d2d4cd;
-}
-
-.white-field:hover {
-  background-color: #edf0e6;
-}
-
-.black-field {
-  background-color: #ac9a32;
-}
-
-.black-field:hover {
-  background-color: #d3bd40;
-}
+@include fields(#d2d4cd, #ac9a32, #edf0e6, #d3bd40);
 
 /* dark blue colors styles */
 
-.dark-blue .white-field {
-  background-color: #d2d4cd;
-}
-
-.dark-blue .white-field:hover {
-  background-color: #edf0e6;
-}
-
-.dark-blue .black-field {
-  background-color: #445566;
-}
-
-.dark-blue .black-field:hover {
-  background-color: #778899;
+.dark-blue {
+  @include fields(#d2d4cd, #445566, #edf0e6, #778899);
 }
 
 /* bright blue colors styles */
 
-.bright-blue .white-field {
-  background-color: #d2d4cd;
-}
-
-.bright-blue .white-field:hover {
-  background-color: #edf0e6;
-}
-
-.bright-blue .black-field {
-  background-color: #778899;
-}
-
-.bright-blue .black-field:hover {
-  background-color: #99aabb;
+.bright-blue {
+  @include fields(#d2d4cd, #778899, #edf0e6, #99aabb);
 }
 

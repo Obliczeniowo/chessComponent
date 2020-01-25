@@ -1,3 +1,4 @@
+import { MaterialModule } from './material/material.module';
 import { ChessModule } from './chess/chess.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -14,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     ChessModule,
+    MaterialModule,
     BrowserAnimationsModule
   ],
   providers: [],
