@@ -16,7 +16,7 @@ export class ChessViewComponent implements OnInit {
 
   chessPawns: Map<string, ChessEnum> = new Map<string, ChessEnum>();
 
-  @ViewChild(ChessComponent, { static: false }) chessComponent: ChessComponent;
+  @ViewChild(ChessComponent) chessComponent: ChessComponent;
 
   constructor() {
     this.chessPawns.set('a1', ChessEnum.whiteRook);
