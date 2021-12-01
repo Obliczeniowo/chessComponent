@@ -33,8 +33,6 @@ $pawn-font-size: calc((100vw - #{$column-row-size} * 2) / 10 * 0.6);
   @extend %pawnsAndRowsHeight;
 }
 
-
-
 .columns-header {
   width: $field-size * 8;
   max-width: calc((100vw - #{$column-row-size} * 2) / 10 * 8);
@@ -51,7 +49,7 @@ $pawn-font-size: calc((100vw - #{$column-row-size} * 2) / 10 * 0.6);
   max-width: $max-field-size;
 }
 
-@media (min-width: $field-size * 10 + $column-row-size * 2) {
+@media (min-width: ($field-size * 10 + $column-row-size * 2)) {
   .pawn-field,
   .chess-field {
     max-width: $field-size;
@@ -88,15 +86,15 @@ $pawn-font-size: calc((100vw - #{$column-row-size} * 2) / 10 * 0.6);
   .white-field {
     background-color: $white;
   }
-  
+
   .white-field:hover {
     background-color: $whiteHover;
   }
-  
+
   .black-field {
     background-color: $black;
   }
-  
+
   .black-field:hover {
     background-color: $blackHover;
   }

@@ -1,3 +1,7 @@
-<div class="pawn-field">
-    {{ pawnType }}
+<div
+  [class]="'pawn-field ' + column + row"
+  (dragstart)="dragstart($event)"
+  draggable="true"
+>
+  {{ pawnType }}
 </div>

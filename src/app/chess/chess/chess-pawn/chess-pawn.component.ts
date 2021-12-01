@@ -1,5 +1,5 @@
 import { ChessEnum } from './../chess-enum';
-import { Component, OnInit, Input, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, AfterViewInit, OnDestroy, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-chess-pawn',
@@ -13,7 +13,9 @@ export class ChessPawnComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @Input() pawnType: ChessEnum;
 
-  private dragstart = (event) => { event.dataTransfer.setData('text/plain', null); };
+  dragstart = (event) => {
+    event.dataTransfer.setData('text/plain', null);
+  };
 
   constructor(private elementRef: ElementRef<HTMLElement>) {}
 
@@ -22,7 +24,11 @@ export class ChessPawnComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngAfterViewInit() {
     this.elementRef.nativeElement.setAttribute('draggable', 'true');
-    this.elementRef.nativeElement.addEventListener('dragstart', this.dragstart);
+    this.elementRef.nativeElement.addEventListener('dragstart', this.dragstart, false);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.elementRef.nativeElement.setAttribute('draggable', 'true');
   }
 
   ngOnDestroy() {
