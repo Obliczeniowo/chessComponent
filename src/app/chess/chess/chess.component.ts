@@ -58,10 +58,12 @@ export class ChessComponent implements AfterViewInit, OnDestroy {
     event.preventDefault();
     const target: HTMLElement = event.target.classList.contains('pawn-field') ? event.target.parentElement : event.target;
     if (target) {
-      const pawn: ChessPawnComponent = this.chessPawnsMapComponent.get(target.className);
-      const pawnFrom: ChessPawnComponent = this.chessPawnsMapComponent.get(this.dragged.classList[1]);
+      const pawn: ChessPawnComponent | undefined = this.chessPawnsMapComponent.get(target.className);
+      // get name of class that is an address of field
+      const name = Array.from(this.dragged.classList).filter(className => className.length === 2)[0];
+      const pawnFrom: ChessPawnComponent | undefined = this.chessPawnsMapComponent.get(name);
       if (pawnFrom) {
-        this.chessPawnsMap.set(this.dragged.classList[1], ChessEnum.nonePawn);
+        this.chessPawnsMap.set(name, ChessEnum.nonePawn);
       }
       if (pawn && (this.dragged.innerText as ChessEnum) !== ChessEnum.nonePawn) {
         this.chessPawnsMap.set(target.className, this.dragged.innerText as ChessEnum);
